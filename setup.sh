@@ -13,7 +13,7 @@ sudo apt install vim
 sudo apt install vim-gnome
 
 echo "Install the plug-ins"
-# git clone https://github.com/powerline/fonts.git
+git clone https://github.com/powerline/fonts.git
 cd fonts
 /bin/sh ./install.sh
 cd ../
