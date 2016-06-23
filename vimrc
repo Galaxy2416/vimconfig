@@ -388,10 +388,10 @@ call vundle#rc() 				" 启动vundle
 
 " required!
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 
-" My Bundles here: /* 插件配置格式 */
+" My Plugins here: /* 插件配置格式 */
 
 "
 
@@ -399,44 +399,48 @@ Bundle 'gmarik/vundle'
 
 	" colors 
 
-" Bundle 'altercation/solarized'
+" Plugin 'altercation/solarized'
 
 	" Plug In
  
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'vim-airline/vim-airline-themes'
-" Bundle 'tpope/vim-rails.git'		" something for Ruby
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'taketwo/vim-ros' " For Ros
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'xieyu/pyclewn'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+
+" Can not work without cmake+python-dev
+Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Chiel92/vim-autoformat'
+" Plugin 'tpope/vim-rails.git'		" something for Ruby
 
 " vim-scripts repos （vim-scripts仓库里的，按下面格式填写）
 
 	" Plug In
 
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'taglist.vim'
-Bundle 'LaTeX-Box'
-Bundle 'a.vim'
-Bundle 'AuthorInfo'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'taglist.vim'
+Plugin 'LaTeX-Box'
+Plugin 'a.vim'
 
-" Can not work without cmake+python-dev
-Bundle 'Valloric/YouCompleteMe'
-" Bundle 'Chiel92/vim-autoformat'
-Bundle'scrooloose/nerdtree'
-Bundle'winmanager'
-Bundle 'kien/ctrlp.vim'
-Bundle 'bling/vim-airline'
-Bundle 'xieyu/pyclewn'
-Bundle 'scrooloose/nerdcommenter'
-" Bundle'scrooloose/syntastic'	" a static syntax checker
+Plugin 'winmanager'
+
+Plugin 'AuthorInfo'
+" Plugin'scrooloose/syntastic'	" a static syntax checker
 	" colors
-Bundle 'molokai'
-Bundle 'desert256.vim'
+Plugin 'molokai'
+Plugin 'desert256.vim'
 
 " non github repos （非上面两种情况的，按下面格式填写）
 
-" Bundle 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 
 
 
@@ -444,18 +448,18 @@ Bundle 'desert256.vim'
 
 " Brief help
 
-" :BundleList - list configured bundles
+" :PluginList - list configured bundles
 
-" :BundleInstall(!) - install(update) bundles
+" :PluginInstall(!) - install(update) bundles
 
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
 
-" :BundleClean(!) - confirm(or auto-approve) removal of unused bundles
+" :PluginClean(!) - confirm(or auto-approve) removal of unused bundles
 
 
 " see :h vundle for more details or wiki for FAQ
 
-" NOTE: comments after Bundle command are not allowed..
+" NOTE: comments after Plugin command are not allowed..
 
 " ----------------------------------- vundel end ------------------------------------
 
@@ -466,15 +470,14 @@ if has("gui_running")
     let g:isGUI = 1
 " Color for gvim
 colorscheme desert         
-nmap <Leader>mo : colorscheme molokai <CR>
-nmap <Leader>de : colorscheme desert <CR>
-
 else
     let g:isGUI = 0
 " Color for vim
 colorscheme molokai     
 endif
 
+nmap <Leader>mo : colorscheme molokai <CR>
+nmap <Leader>de : colorscheme desert <CR>
 " ----------------------------------- GUI gvim end ------------------------------------
  
 " ctags + cscope {
@@ -606,7 +609,7 @@ nnoremap <leader>] :bn<CR>
 
 " authorinfo {
 
-" NERD_commenter && authorinfo 自动添加作者、时间等信息，使用:AuthorInfoDetect
+" NERD_commenter &&  自动添加作者、时间等信息，使用:AuthorInfoDetect
 let g:vimrc_author='Galaxy2416'
 let g:vimrc_email='sunxiao.gin@gmail.com'
 let g:vimrc_homepage='Compiler: gcc&&g++'
@@ -801,7 +804,7 @@ nnoremap <silent> <Leader>fuz :call fuf#givencmd#launch('', 0, 'commands>', g:fu
 
 " YouCompleteMe {
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_collect_identifiers_from_tag_files = 1
 let g:syntastic_ignore_files=[".*\.py$"]
 let g:ycm_complete_in_comments = 1
@@ -821,4 +824,4 @@ nnoremap <leader>di : if ycm_enable_diagnostic_highlighting == 1<BAR>
 			\else <BAR>
 			\let g:ycm_enable_diagnostic_highlighting = 1<BAR>
 			\endif<CR>
-" }
+" 
