@@ -151,7 +151,7 @@ function s:AddTitle()
     normal o
     call setline('.',noTypeChar.preChar.' @version 0.0.1')
     normal o
-    call setline('.',noTypeChar.preChar.' @data '.strftime("%Y-%m-%d %H:%M:%S"))
+    call setline('.',noTypeChar.preChar.' @date '.strftime("%Y-%m-%d %H:%M:%S"))
     normal o
     let lastLine = line('.')
     "在最后一行之后做的事情
