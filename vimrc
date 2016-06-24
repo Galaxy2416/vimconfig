@@ -612,7 +612,7 @@ nnoremap <leader>] :bn<CR>
 " NERD_commenter &&  自动添加作者、时间等信息，使用:AuthorInfoDetect
 let g:vimrc_author='Galaxy2416'
 let g:vimrc_email='sunxiao.gin@gmail.com'
-let g:vimrc_homepage='Compiler: gcc&&g++'
+let g:vimrc_homepage='galaxy2416.github.io'
 let g:vimrc_history='gcc&&g++'
 nmap <C-E> :AuthorInfoDetect<cr>
 " }
