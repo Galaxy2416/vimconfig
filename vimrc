@@ -507,7 +507,7 @@ function! Do_CsTag()
         if(g:isWin)
             silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
         else
-            silent! execute "!find . -iname '*.[ch]' -o -name '*.cpp' > cscope.files"
+            silent! execute "!find . `pwd` -iname '*.[ch]' -o -name '*.cpp' > cscope.files"
         endif
         silent! execute "!cscope -b"
         execute "normal :"
