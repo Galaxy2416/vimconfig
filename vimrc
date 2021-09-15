@@ -9,6 +9,7 @@ else
 endif
 
 
+
 " 256 color xterm-256color or 8 color 
 " if &term=="xterm"
 "    set t_Co=8
@@ -61,7 +62,7 @@ set cindent shiftwidth=4     " Set autoindent 4 spacing			" 自动缩进4空格
 set smartindent              " Smartindent				" 智能自动缩进
 set number                      " Display line number			" 显示行号
 set showmatch                " Brackets match				" 显示括号配对情况
-set mouse=a                  " Enable the mouse				" 启用鼠标
+"set mouse=a                  " Enable the mouse				" 启用鼠标
 set ruler                    " Shows the state of the cursor position	" 右下角显示光标位置的状态行
 set incsearch                " /b could search book			" 查找book时，当输入/b时会自动找到
 set hlsearch                 " high light search			" 开启高亮显示结果
@@ -71,6 +72,10 @@ set cursorline               " High light the current line		" 突出显示当前
 set hidden                   " Allow shitf the buffer without saving the Buffer	"允许在有未保存的修改时切换缓冲区
 "set list                    " Show tab					" 显示Tab符，使用一高亮竖线代替
 "set listchars=tab:\|\ ,
+
+"set the insert mode
+au InsertEnter * silent execute "!echo -en \<esc>[5 q"
+au InsertLeave * silent execute "!echo -en \<esc>[2 q"
 
 " The width of the Plug
 " 插件窗口的宽度，如TagList,NERD_tree等，自己设置
@@ -195,11 +200,11 @@ nmap <C-.> :shell<cr>
 
 :inoremap > <c-r>=ClosePair('>')<CR>
 
-:inoremap " ""<ESC>i
+" :inoremap \" \"\"<ESC>i
 
-:inoremap ' ''<ESC>i
+" :inoremap ' ''<ESC>i
 
-:inoremap ` ``<ESC>i
+" :inoremap ` ``<ESC>i
 
  function ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
@@ -223,8 +228,8 @@ endfunc
 " 编译C++源文件
 func! CompileCpp()
     exec "w"
-    let compilecmd="!g++ -Wall "
-    let compileflag="-o %<"
+    let compilecmd="!g++ -Wall --std=c++20"
+    let compileflag="-g -o %<"
     exec compilecmd." % ".compileflag
 endfunc
 
@@ -353,11 +358,12 @@ endfunc
 
 " Ctrl + C 一键保存、编译
 " Ctrl + R 一键保存、运行
+nnoremap  <Leader><Leader>c :call CompileCode()<CR>
 map <C-C> :call CompileCode()<CR>
 imap <C-C> <ESC>:call CompileCode()<CR>
 vmap <C-C> <ESC>:call CompileCode()<CR>
 
-nnoremap  <Leader><Leader>run :call RunResult()<CR>
+nnoremap  <Leader><Leader>r :call RunResult()<CR>
 " imap <C-R> <ESC>:call RunResult()<CR>
 " vmap <C-R> <ESC>:call RunResult()<CR>
 
@@ -407,16 +413,18 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'taketwo/vim-ros' " For Ros
+" Plugin 'taketwo/vim-ros' " For Ros
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
-Plugin 'xieyu/pyclewn'
+" Plugin 'xieyu/pyclewn'
+Plugin 'epheien/termdbg'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 
 " Can not work without cmake+python-dev
 Plugin 'Valloric/YouCompleteMe'
+" "Plugin 'Valloric/YouCompleteMe',{'do':'python3 install.py --all'}'
 " Plugin 'Chiel92/vim-autoformat'
 " Plugin 'tpope/vim-rails.git'		" something for Ruby
 
@@ -623,6 +631,10 @@ nmap <C-E> :AuthorInfoDetect<cr>
 map <leader>cw :copen<cr>
 map <F3> :cp<cr>
 map <F4> :cn<cr>
+
+" tab 
+map <F7> :tabnext<cr>
+map <F8> :tabprevious<cr>
 
 " }
 
